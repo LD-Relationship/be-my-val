@@ -85,7 +85,7 @@
         .no-btn {
             background: #ddd;
             color: #666;
-            position: absolute;
+            position: relative;
         }
 
         .no-btn:hover {
@@ -155,17 +155,19 @@
 
         // Move the No button randomly
         function moveButton() {
-            const noBtn = document.getElementById('noBtn');
-            const container = document.querySelector('.buttons');
-            
-            const maxX = container.offsetWidth - noBtn.offsetWidth;
-            const maxY = container.offsetHeight - noBtn.offsetHeight;
-            
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
-            
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+    const noBtn = document.getElementById('noBtn');
+    noBtn.style.position = 'absolute';
+    
+    const container = document.querySelector('.buttons');
+    const maxX = container.offsetWidth - noBtn.offsetWidth;
+    const maxY = container.offsetHeight - noBtn.offsetHeight;
+    
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+    
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+}
         }
 
         // When Yes is clicked
