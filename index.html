@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #ff69b4;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .question {
+            font-size: 24px;
+            color: #ff1493;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .yes-btn {
+            background: #ff69b4;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #ff1493;
+            transform: scale(1.1);
+        }
+
+        .no-btn {
+            background: #ddd;
+            color: #666;
+            position: absolute;
+        }
+
+        .no-btn:hover {
+            background: #ccc;
+        }
+
+        .flowers {
+            display: none;
+            font-size: 80px;
+            margin: 20px 0;
+            animation: bloom 0.5s ease-in-out;
+        }
+
+        .thank-you {
+            display: none;
+            font-size: 32px;
+            color: #ff1493;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes bloom {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="profileImg" class="profile-img" src="" alt="Profile Picture">
+        <h1 id="personName">Loading...</h1>
+        <p class="question">Will you be my Valentine? 💝</p>
+        
+        <div id="buttonsContainer" class="buttons">
+            <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
+            <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+
+        <div class="flowers" id="flowers">🌹🌺🌸🌼🌻🌷</div>
+        <div class="thank-you" id="thankYou">Thank you! 💖</div>
+    </div>
+
+    <script>
+        // Get parameters from URL
+        function getParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name') || 'Beautiful',
+                img: params.get('img') || 'default.jpg'
+            };
+        }
+
+        // Load the custom data
+        const data = getParams();
+        document.getElementById('personName').textContent = data.name;
+        document.getElementById('profileImg').src = 'images/' + data.img;
+
+        // Move the No button randomly
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.buttons');
+            
+            const maxX = container.offsetWidth - noBtn.offsetWidth;
+            const maxY = container.offsetHeight - noBtn.offsetHeight;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // When Yes is clicked
+        function sayYes() {
+            document.getElementById('buttonsContainer').classList.add('hidden');
+            document.getElementById('flowers').style.display = 'block';
+            document.getElementById('thankYou').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+```
+
+4. Scroll down and click **"Commit changes"**
+5. Click **"Commit changes"** again in the popup
+
+---
+
+### **STEP 5: Create the Images Folder**
+
+1. In your repository, click **"Add file"** → **"Create new file"**
+2. Type: `images/placeholder.txt`
+3. Add any text in the file (like "image folder")
+4. Click **"Commit changes"**
+
+This creates an `images` folder where you'll upload customer photos.
+
+---
+
+### **STEP 6: Add a Default Image (Optional)**
+
+1. Find a default/placeholder image on your computer
+2. In your repository, click on the **"images"** folder
+3. Click **"Add file"** → **"Upload files"**
+4. Drag and drop your image (rename it to `default.jpg` first)
+5. Click **"Commit changes"**
+
+---
+
+### **STEP 7: Test Your Page**
+
+Visit: `https://yourusername.github.io/valentine-pages/`
+
+(Replace `yourusername` with your actual GitHub username)
+
+You should see the page with the default image!
+
+---
+
+### **STEP 8: How to Create Custom Pages for Customers**
+
+**When a customer orders:**
+
+1. Customer sends you:
+   - Their name (e.g., "Sarah")
+   - Their photo
+
+2. **Upload their photo:**
+   - Go to your repository → `images` folder
+   - Click **"Add file"** → **"Upload files"**
+   - Rename the photo to something simple like `sarah.jpg` (no spaces!)
+   - Upload it
+   - Click **"Commit changes"**
+
+3. **Generate their custom link:**
+```
+   https://yourusername.github.io/valentine-pages/?name=Sarah&img=sarah.jpg
+```
+   
+   Replace:
+   - `yourusername` with your GitHub username
+   - `Sarah` with their name
+   - `sarah.jpg` with the exact filename you uploaded
+
+4. **Send them their link!**
+
+---
+
+### **STEP 9: Link Format Examples**
+```
+https://yourusername.github.io/valentine-pages/?name=Emily&img=emily.jpg
+https://yourusername.github.io/valentine-pages/?name=James&img=james.png
+https://yourusername.github.io/valentine-pages/?name=Maria&img=maria123.jpg
