@@ -59,7 +59,7 @@
             justify-content: center;
             margin-top: 30px;
             position: relative;
-            min-height: 60px;
+            min-height: 80px;
         }
 
         button {
@@ -85,7 +85,6 @@
         .no-btn {
             background: #ddd;
             color: #666;
-            position: relative;
         }
 
         .no-btn:hover {
@@ -155,19 +154,27 @@
 
         // Move the No button randomly
         function moveButton() {
-    const noBtn = document.getElementById('noBtn');
-    noBtn.style.position = 'absolute';
-    
-    const container = document.querySelector('.buttons');
-    const maxX = container.offsetWidth - noBtn.offsetWidth;
-    const maxY = container.offsetHeight - noBtn.offsetHeight;
-    
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-    
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
-}
+            const noBtn = document.getElementById('noBtn');
+            const buttons = document.querySelector('.buttons');
+            
+            // Make it absolute positioned
+            noBtn.style.position = 'absolute';
+            
+            // Get container dimensions
+            const containerWidth = buttons.offsetWidth;
+            const containerHeight = buttons.offsetHeight;
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Calculate random position
+            const maxX = containerWidth - btnWidth;
+            const maxY = containerHeight - btnHeight;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
         }
 
         // When Yes is clicked
