@@ -32,8 +32,8 @@
         }
 
         .profile-img {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
@@ -42,8 +42,13 @@
 
         h1 {
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-size: 28px;
+        }
+
+        .emojis {
+            font-size: 30px;
+            margin-bottom: 5px;
         }
 
         .question {
@@ -91,11 +96,10 @@
             background: #ccc;
         }
 
-        .flowers {
+        #celebrationGif {
             display: none;
-            font-size: 80px;
-            margin: 20px 0;
-            animation: bloom 0.5s ease-in-out;
+            width: 300px;
+            margin-top: 20px;
         }
 
         .thank-you {
@@ -103,13 +107,8 @@
             font-size: 32px;
             color: #ff1493;
             font-weight: bold;
+            margin-top: 10px;
             animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes bloom {
-            0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
         }
 
         @keyframes fadeIn {
@@ -126,14 +125,15 @@
     <div class="container">
         <img id="profileImg" class="profile-img" src="" alt="Profile Picture">
         <h1 id="personName">Loading...</h1>
-        <p class="question">Will you be my Valentine? <b>💝🥹🥹</b></p>
+        <p class="question">Will you be my Valentine?</p>
+          <p class="emojis">💝🥹🥹</p>
         
         <div id="buttonsContainer" class="buttons">
             <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
             <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
 
-        <div class="flowers" id="flowers">🌹🌺🌸🌼🌻🌷</div>
+        <img id="celebrationGif" src="images/celebration.gif" alt="Celebration">
         <div class="thank-you" id="thankYou">Thank you! 💖</div>
     </div>
 
@@ -149,7 +149,7 @@
 
         // Load the custom data
         const data = getParams();
-        document.getElementById('personName').textContent = data.name;
+        document.getElementById('personName').textContent = 'Hi, ' + data.name;
         document.getElementById('profileImg').src = 'images/' + data.img;
 
         // Move the No button randomly
@@ -157,16 +157,13 @@
             const noBtn = document.getElementById('noBtn');
             const buttons = document.querySelector('.buttons');
             
-            // Make it absolute positioned
             noBtn.style.position = 'absolute';
             
-            // Get container dimensions
             const containerWidth = buttons.offsetWidth;
             const containerHeight = buttons.offsetHeight;
             const btnWidth = noBtn.offsetWidth;
             const btnHeight = noBtn.offsetHeight;
             
-            // Calculate random position
             const maxX = containerWidth - btnWidth;
             const maxY = containerHeight - btnHeight;
             
@@ -180,7 +177,7 @@
         // When Yes is clicked
         function sayYes() {
             document.getElementById('buttonsContainer').classList.add('hidden');
-            document.getElementById('flowers').style.display = 'block';
+            document.getElementById('celebrationGif').style.display = 'block';
             document.getElementById('thankYou').style.display = 'block';
         }
     </script>
